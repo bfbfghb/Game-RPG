@@ -26,6 +26,7 @@ do{
      switch(resp){ 
       case 1:
         do{ 
+         run = false;
          printf("\n\tvida do oponente e de %i e o ataque de %i ",vo,ao);
         vo = a - (od*2);
         v =  ao - (d*2);         
