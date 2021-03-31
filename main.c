@@ -51,8 +51,10 @@ do{
         }
         if(v <= 0)
         {
-            printf("\n\tseu openente te atacou e voce morreu");
+            printf("\n\tseu openente te atacou e voce morreu"); 
+            level = 1;
             resp = 2;
+            break;
         } 
         else{        
             printf("\n\tseu oponente te atacou e voce está com %i de vida",v);
