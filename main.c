@@ -23,7 +23,6 @@ do{
     printf("\n\tvoce tem\n\tvida: %i \n\tataque: %i \n\tLevel: %i \n\tdefesa: %i",v,a,level,d);
     printf("\n\t>>>>>>>voce deseja<<<<<<< \n\t1 atacar \n\t2 trocar personagem: ");
     scanf("%i", &resp);
-  
      switch(resp){ 
       case 1:
         do{ 
@@ -39,19 +38,16 @@ do{
         {
           printf("\n\tvoce conseguiu derrotar seu inimigo");
           level++;
-            v = 150;
-            a = 150;
-            d = 135;
+            v += 150;
+            a += 150;
+            d += 135;
             vo = rand() %270;
             ao = rand() %270;
             od = rand() %250;
             printf("\n\t>>>>>>>voce passou para o level %i<<<<<<<\n\tvida: %i\n\tdefesa: %i\n\tataque: %i",level, v,d,a);
             printf("\n\t>>>>>>>voce deseja<<<<<<< \n\t1 atacar \n\t2 desistir: ");
             scanf("%i", &resp);
-            if(resp == 1)
-            {
-              run = true;
-            }
+            if(resp ==1)run = true;
         }
         if(v <= 0)
         {
