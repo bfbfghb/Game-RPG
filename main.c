@@ -38,8 +38,6 @@ do{
          printf("\n\tEnemy Skills \n\tlife: %i \n\tattack %i \n\tdefense: %i ",le,ae,de);
         le = a - (de*2);
         l =  ae - (d*2);         
-        
-        if(le <= 0 && l <= 0){
          if(le >= 0)
         {
           printf("\n\tyou attacked your enemy and he has %i of life",le);
@@ -68,8 +66,7 @@ do{
         } 
         else{        
             printf("\n\tyour enemy attacks you and you have %i of life",l);
-        }     
-        }
+        } 
       }while(run == true);
     }
   }while(resp == 2 || l <= 0);
