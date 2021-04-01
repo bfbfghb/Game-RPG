@@ -3,64 +3,75 @@
 Game RPG
 
 *******************************************************************************/
-
+/*
+  Guide variables
+  l = life
+  a = attack
+  d = defense
+  le = life enemy
+  ae = attack enemy
+  de = defense enemy
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 int main(void)
 {
-   int v,a,vo,ao,d,od;
+   int l,a,le,ae,d,de;
    int resp;
    int level = 1;
    bool run = false;
 do{   
-   v  = rand() %100;
-   a  = rand() %100;
-   vo = rand() %100;
-   ao = rand() %100;
-   d  = rand() %50;
-   od = rand() %50;
-    printf("\n\tvoce tem\n\tvida: %i \n\tataque: %i \n\tLevel: %i \n\tdefesa: %i",v,a,level,d);
-    printf("\n\t>>>>>>>voce deseja<<<<<<< \n\t1 atacar \n\t2 trocar personagem: ");
+   l  = rand() %100 + 40;
+   a  = rand() %30 + 40;
+   le = rand() %100 + 40;
+   ae = rand() %30 + 40;
+   d  = rand() %60 + 40;
+   de = rand() %60 + 40;
+    printf("\n\tYou Have\n\tlife: %i \n\tattack: %i \n\tLevel: %i \n\tdefense: %i",l,a,level,d);
+    printf("\n\t>>>>>>>you wish<<<<<<< \n\t1 attack \n\t2 choose other character: ");
     scanf("%i", &resp);
      switch(resp){ 
       case 1:
         do{ 
-         run = false;
-         printf("\n\tvida do oponente e de %i e o ataque de %i ",vo,ao);
-        vo = a - (od*2);
-        v =  ao - (d*2);         
+        run = false;
+         printf("\n\tEnemy Skills \n\tlife: %i \n\tattack %i \n\tdefense: %i ",le,ae,de);
+        le = a - (de*2);
+        l =  ae - (d*2);         
         
-         if(vo >= 0)
+        if(le <= 0 && l <= 0){
+         if(le >= 0)
         {
-          printf("\n\tvoce atacou seu oponente e agora ele tem %i de vida",vo);
+          printf("\n\tyou attacked your enemy and he has %i of life",le);
         }
         else
         {
-          printf("\n\tvoce conseguiu derrotar seu inimigo");
+          printf("\n\tyou win the battle!");
           level++;
-            v += 150;
+            l += 350;
             a += 150;
             d += 135;
-            vo = rand() %270;
-            ao = rand() %270;
-            od = rand() %250;
-            printf("\n\t>>>>>>>voce passou para o level %i<<<<<<<\n\tvida: %i\n\tdefesa: %i\n\tataque: %i",level, v,d,a);
-            printf("\n\t>>>>>>>voce deseja<<<<<<< \n\t1 atacar \n\t2 desistir: ");
+            le = rand() %270;
+            ae = rand() %270;
+            de = rand() %250;
+            printf("\n\t>>>>>>>you're on level %i<<<<<<<\n\tLife: %i\n\tdefense: %i\n\tattack: %i",level, l,d,a);
+            printf("\n\t>>>>>>>you wish<<<<<<< \n\t1 attack \n\t2 try other character: ");
             scanf("%i", &resp);
             if(resp ==1)run = true;
         }
-        if(v <= 0)
+        if(l <= 0)
         {
-            printf("\n\tseu openente te atacou e voce morreu"); 
+            printf("\n\tyour enemy attacked you and you have died"); 
             level = 1;
             resp = 2;
             break;
         } 
         else{        
-            printf("\n\tseu oponente te atacou e voce está com %i de vida",v);
+            printf("\n\tyour enemy attacks you and you have %i of life",l);
         }     
+        }
       }while(run == true);
     }
-  }while(resp == 2 || v  <= 0);
+  }while(resp == 2 || l <= 0);
+  return 0;
 }
